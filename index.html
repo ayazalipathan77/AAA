@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AAA Tactical</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Chakra Petch', 'sans-serif'],
+              heading: ['Rajdhani', 'sans-serif'],
+              mono: ['"Share Tech Mono"', 'monospace'],
+            },
+            colors: {
+              military: {
+                950: '#050505', // Void
+                900: '#0a0a0a', // Deep
+                800: '#121212', // Surface
+                700: '#1c1c1c', // Component
+                600: '#2a2a2a', // Border
+                accent: '#ef4444', // Red-500 (High Vis)
+                accentDark: '#dc2626', // Red-600
+                accentGlow: 'rgba(239, 68, 68, 0.5)',
+                text: '#e5e5e5', 
+                muted: '#a3a3a3',
+              }
+            },
+            backgroundImage: {
+              'metal-gradient': 'linear-gradient(180deg, #2a2a2a 0%, #121212 100%)',
+              'metal-shine': 'linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%)',
+              'grid-pattern': 'linear-gradient(to right, #2a2a2a 1px, transparent 1px), linear-gradient(to bottom, #2a2a2a 1px, transparent 1px)',
+              'hex-pattern': 'url("data:image/svg+xml,%3Csvg width=\'24\' height=\'40\' viewBox=\'0 0 24 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 40c5.523 0 10-4.477 10-10V10c0-5.523 4.477-10 10-10H0v40z\' fill=\'%231c1c1c\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        /* Dark grunge/metal texture background */
+        background-color: #030303;
+        background-image: 
+          linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+          url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #e5e5e5;
+      }
+      .font-heading {
+        font-family: 'Rajdhani', sans-serif;
+      }
+      .clip-angled {
+        clip-path: polygon(
+          20px 0, 100% 0, 
+          100% calc(100% - 20px), calc(100% - 20px) 100%, 
+          0 100%, 0 20px
+        );
+      }
+      .clip-angled-sm {
+        clip-path: polygon(
+          10px 0, 100% 0, 
+          100% calc(100% - 10px), calc(100% - 10px) 100%, 
+          0 100%, 0 10px
+        );
+      }
+      .clip-tech {
+        clip-path: polygon(
+          0 0, 
+          calc(100% - 20px) 0, 
+          100% 20px, 
+          100% 100%, 
+          20px 100%, 
+          0 calc(100% - 20px)
+        );
+      }
+      .scanline {
+        background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.3));
+        background-size: 100% 3px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.1;
+      }
+      
+      /* Opaque Text Utilities */
+      .text-opaque-high {
+        color: rgba(255, 255, 255, 0.95);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      .text-opaque-med {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .text-opaque-low {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a0a0a; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ef4444; 
+        border-radius: 0;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #dc2626; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.568.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="scanline"></div>
+  </body>
+</html>
