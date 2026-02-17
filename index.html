@@ -46,33 +46,36 @@
   </script>
   <style>
     body {
-      /* Black/Grey metal base with subtle rusted spots, scratches, and cuts */
+      /* Use project background image if present, otherwise layered metal texture */
       background-color: #0b0b0b;
       background-image:
-        radial-gradient(circle at 12% 18%, rgba(139, 69, 19, 0.08), transparent 8%),
-        radial-gradient(circle at 84% 72%, rgba(139, 69, 19, 0.06), transparent 12%),
-        linear-gradient(180deg, #141414 0%, #070707 100%),
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 6px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.02));
-      background-size: cover, cover, cover, 6px 6px, cover;
-      background-attachment: fixed;
-      background-blend-mode: overlay, overlay, normal, normal, normal;
+        url('/metal-bg.jpg'),
+        radial-gradient(circle at 12% 18%, rgba(139, 69, 19, 0.03), transparent 8%),
+        radial-gradient(circle at 84% 72%, rgba(139, 69, 19, 0.02), transparent 12%),
+        linear-gradient(180deg, rgba(20, 20, 20, 0.25) 0%, rgba(7, 7, 7, 0.25) 100%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.01) 0 1px, transparent 1px 6px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.01));
+      background-size: cover, cover, cover, cover, 6px 6px, cover;
+      background-position: center center, center center, center center, center center, 0 0, center center;
+      background-attachment: fixed, fixed, fixed, fixed, fixed, fixed;
+      /* keep the photo as the dominant layer and make overlays subtle */
+      background-blend-mode: normal, normal, normal, overlay, normal, normal;
       color: #dcfce7;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Fine scratch overlay */
+    /* Fine scratch overlay (subtle so image shows through) */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.02) 0.5px, transparent 0.5px),
-        linear-gradient(60deg, rgba(255, 255, 255, 0.01) 0.5px, transparent 0.5px);
-      opacity: 0.12;
-      mix-blend-mode: overlay;
+      background-image: linear-gradient(120deg, rgba(255, 255, 255, 0.01) 0.5px, transparent 0.5px),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.005) 0.5px, transparent 0.5px);
+      opacity: 0.06;
+      mix-blend-mode: normal;
     }
 
     .font-heading {
