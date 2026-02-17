@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, Hexagon, Search } from 'lucide-react';
+import { Menu, X, ShoppingCart, Hexagon, Search, Lock } from 'lucide-react';
+import { PageView } from '../App';
 
 interface NavbarProps {
   cartCount: number;
   currentView: string;
-  onNavigate: (view: any) => void;
+  onNavigate: (view: PageView) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ cartCount, currentView, onNavigate }) => {
@@ -19,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, currentView, onNavigate }) =
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = ['ARMORY', 'MUNITIONS', 'GEAR', 'INTEL'];
+  const menuItems: PageView[] = ['ARMORY', 'MUNITIONS', 'GEAR', 'INTEL'];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${
@@ -78,13 +79,25 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, currentView, onNavigate }) =
               />
             </div>
             
-            <button className="relative flex items-center justify-center w-10 h-10 text-white hover:text-military-accent transition-colors group">
+            <button 
+              onClick={() => onNavigate('CART')}
+              className={`relative flex items-center justify-center w-10 h-10 text-white hover:text-military-accent transition-colors group ${currentView === 'CART' ? 'text-military-accent' : ''}`}
+            >
               <ShoppingCart className="w-6 h-6" strokeWidth={1.5} />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center clip-angled-sm bg-military-accent text-[10px] font-bold text-white">
                   {cartCount}
                 </span>
               )}
+            </button>
+
+            {/* Admin Hidden Link */}
+            <button 
+              onClick={() => onNavigate('ADMIN_DASHBOARD')}
+              className="text-white/20 hover:text-military-accent transition-colors"
+              title="C2 Access"
+            >
+              <Lock className="w-4 h-4" />
             </button>
 
             {/* Mobile Toggle */}
@@ -113,6 +126,15 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, currentView, onNavigate }) =
               {item}
             </button>
           ))}
+          <button 
+              onClick={() => {
+                onNavigate('CART');
+                setIsMobileMenuOpen(false);
+              }}
+              className="text-left text-white font-heading font-bold text-xl tracking-widest border-l-2 border-transparent hover:border-military-accent pl-4 transition-all"
+            >
+              REQUISITION LIST
+            </button>
         </div>
       )}
     </nav>

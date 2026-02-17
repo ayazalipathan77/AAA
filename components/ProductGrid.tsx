@@ -1,15 +1,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { PRODUCTS } from '../constants';
 import { Product } from '../types';
 import { Plus, ArrowRight, Crosshair, Filter, SlidersHorizontal } from 'lucide-react';
 
 interface ProductGridProps {
-  onAddToCart: () => void;
+  products: Product[];
+  onAddToCart: (product: Product) => void;
   onViewProduct: (product: Product) => void;
   forcedCategory?: string;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onViewProduct, forcedCategory }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onViewProduct, forcedCategory }) => {
   const [category, setCategory] = useState('All');
   const [activeSpecs, setActiveSpecs] = useState<Record<string, string>>({});
 
@@ -28,9 +28,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onViewProduct, f
   // 1. Filter by Category
   const categoryProducts = useMemo(() => {
     return category === 'All' 
-      ? PRODUCTS 
-      : PRODUCTS.filter(p => p.category === category);
-  }, [category]);
+      ? products 
+      : products.filter(p => p.category === category);
+  }, [category, products]);
 
   // 2. Derive available filters from the products in this category
   const availableFilters = useMemo(() => {
@@ -198,6 +198,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onViewProduct, f
                       <span className="text-opaque-med">{value}</span>
                     </div>
                   ))}
+                  <div className="flex justify-between items-center text-xs font-mono border-b border-white/5 pb-2">
+                    <span className="text-opaque-low uppercase tracking-wider">STOCK</span>
+                    <span className={`${product.stock < 5 ? 'text-red-500 font-bold' : 'text-green-500'}`}>{product.stock} UNITS</span>
+                  </div>
                 </div>
 
                 <div className="flex gap-3">
@@ -209,8 +213,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onAddToCart, onViewProduct, f
                      <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
                    </button>
                    <button 
-                     onClick={(e) => { e.stopPropagation(); onAddToCart(); }}
-                     className="w-12 bg-white/5 hover:bg-military-accent text-white flex items-center justify-center clip-angled-sm transition-colors border border-white/10 hover:border-transparent"
+                     onClick={(e) => { e.stopPropagation(); onAddToCart(product); }}
+                     disabled={product.stock === 0}
+                     className="w-12 bg-white/5 hover:bg-military-accent text-white flex items-center justify-center clip-angled-sm transition-colors border border-white/10 hover:border-transparent disabled:opacity-50 disabled:hover:bg-transparent"
                    >
                      <Plus className="w-4 h-4" />
                    </button>

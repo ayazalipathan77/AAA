@@ -9,6 +9,25 @@ export interface Product {
   stock: number;
 }
 
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+export interface Order {
+  id: string;
+  customer: {
+    name: string;
+    email: string;
+    address: string;
+  };
+  total: number;
+  status: 'PENDING' | 'DEPLOYED' | 'CANCELED';
+  date: string;
+  items: CartItem[];
+  shipping: number;
+  tax: number;
+}
+
 export interface SlideData {
   id: number;
   title: string;

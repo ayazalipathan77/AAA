@@ -43,15 +43,11 @@
     </script>
     <style>
       body {
-        /* Dark grunge/metal texture background */
-        background-color: #030303;
-        background-image: 
-          linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-          url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
-        background-size: cover;
-        background-position: center;
+        /* Two-color grey to dark grey gradient background */
+        background: linear-gradient(to bottom, #3a3a3a, #0a0a0a);
         background-attachment: fixed;
         color: #e5e5e5;
+        min-height: 100vh;
       }
       .font-heading {
         font-family: 'Rajdhani', sans-serif;
@@ -118,6 +114,30 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #dc2626; 
+      }
+
+      /* Print Specific Styles */
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .print-area, .print-area * {
+          visibility: visible;
+        }
+        .print-area {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: white !important;
+          color: black !important;
+          z-index: 9999;
+          padding: 20px;
+        }
+        .no-print {
+          display: none !important;
+        }
       }
     </style>
   <script type="importmap">
