@@ -21,7 +21,7 @@ const HeroSlider: React.FC = () => {
   const nextSlide = useCallback(() => {
     goTo((current + 1) % SLIDES.length);
   }, [current, goTo]);
-
+    <div className="relative w-full h-[75vh] md:h-[70vh] lg:h-[65vh] overflow-hidden bg-military-950/20 select-none">
   const prevSlide = useCallback(() => {
     goTo((current - 1 + SLIDES.length) % SLIDES.length);
   }, [current, goTo]);
@@ -47,8 +47,8 @@ const HeroSlider: React.FC = () => {
         >
           {/* Image with slow zoom */}
           <div className="absolute inset-0 overflow-hidden">
-            <img
-              src={slide.image}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-military-950/20 via-transparent to-military-950/20" />
               alt={slide.title}
               className="w-full h-full object-cover"
               style={{
