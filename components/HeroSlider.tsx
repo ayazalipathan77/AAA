@@ -21,9 +21,9 @@ const HeroSlider: React.FC = () => {
   const nextSlide = useCallback(() => {
     goTo((current + 1) % SLIDES.length);
   }, [current, goTo]);
-    <div className="relative w-full h-[75vh] md:h-[70vh] lg:h-[65vh] overflow-hidden bg-military-950/20 select-none">
+  <div className="relative w-full h-[75vh] md:h-[70vh] lg:h-[65vh] overflow-hidden bg-military-950/20 select-none">
   const prevSlide = useCallback(() => {
-    goTo((current - 1 + SLIDES.length) % SLIDES.length);
+      goTo((current - 1 + SLIDES.length) % SLIDES.length);
   }, [current, goTo]);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const HeroSlider: React.FC = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
-  return (
+    return (
     <div className="relative w-full h-[60vh] md:h-[55vh] lg:h-[50vh] overflow-hidden bg-military-950 select-none">
 
       {/* === BACKGROUND SLIDES === */}
@@ -47,14 +47,14 @@ const HeroSlider: React.FC = () => {
         >
           {/* Image with slow zoom */}
           <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/20 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-military-950/20 via-transparent to-military-950/20" />
-              alt={slide.title}
-              className="w-full h-full object-cover"
-              style={{
-                filter: 'grayscale(80%) contrast(1.15) brightness(0.55)',
-                animation: index === current ? 'heroZoomSlow 8s ease-out forwards' : 'none',
-              }}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-military-950/20 via-transparent to-military-950/20" />
+            alt={slide.title}
+            className="w-full h-full object-cover"
+            style={{
+              filter: 'grayscale(80%) contrast(1.15) brightness(0.55)',
+              animation: index === current ? 'heroZoomSlow 8s ease-out forwards' : 'none',
+            }}
             />
           </div>
 
@@ -118,11 +118,10 @@ const HeroSlider: React.FC = () => {
                 {SLIDES[current].title.split(' ').map((word, i) => (
                   <span
                     key={`${animKey}-${i}`}
-                    className={`inline-block mr-[0.3em] text-5xl md:text-7xl lg:text-8xl ${
-                      i === 0
+                    className={`inline-block mr-[0.3em] text-5xl md:text-7xl lg:text-8xl ${i === 0
                         ? 'text-transparent bg-clip-text bg-gradient-to-br from-military-accent via-green-300 to-military-accent'
                         : 'text-white'
-                    }`}
+                      }`}
                     style={{
                       animation: `heroRevealUp 0.6s ${0.1 + i * 0.12}s ease-out both`,
                     }}
@@ -244,7 +243,7 @@ const HeroSlider: React.FC = () => {
       <div className="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-military-accent/20 pointer-events-none z-10" />
       <div className="absolute bottom-4 right-4 w-3 h-3 border-b-2 border-r-2 border-military-accent/50 pointer-events-none z-10" />
     </div>
-  );
+    );
 };
 
-export default HeroSlider;
+    export default HeroSlider;
