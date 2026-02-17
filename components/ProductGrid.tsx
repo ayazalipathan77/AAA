@@ -88,7 +88,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onView
               onClick={() => handleCategoryChange(cat)}
               className={`relative px-8 py-3 font-heading font-bold text-sm uppercase tracking-[0.2em] transition-all duration-300 clip-angled-sm ${
                 category === cat 
-                  ? 'bg-military-accent text-white shadow-[0_0_20px_rgba(239,68,68,0.4)]' 
+                  ? 'bg-military-accent text-white shadow-[0_0_20px_rgba(34,197,94,0.4)]' 
                   : 'bg-black/40 backdrop-blur-sm text-opaque-med hover:text-white hover:bg-white/5 border border-white/5'
               }`}
             >
@@ -130,7 +130,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onView
                           onClick={() => toggleSpec(filterGroup.key, val)}
                           className={`px-3 py-1 text-[10px] font-mono border transition-all clip-angled-sm uppercase ${
                             isActive
-                              ? 'bg-military-accent border-military-accent text-white shadow-[0_0_10px_rgba(239,68,68,0.3)]'
+                              ? 'bg-military-accent border-military-accent text-white shadow-[0_0_10px_rgba(34,197,94,0.3)]'
                               : 'bg-transparent border-white/20 text-opaque-med hover:border-white/40 hover:text-white'
                           }`}
                         >
@@ -166,17 +166,47 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onView
                </div>
 
               {/* Image Container */}
-              <div className="relative h-72 overflow-hidden bg-black/50 border-b border-white/5 group-hover:border-military-accent/50 transition-colors">
+              <div className="relative h-72 overflow-hidden bg-black/50 border-b border-white/5 group-hover:border-military-accent/50 transition-colors cursor-pointer" onClick={() => onViewProduct(product)}>
                 <img 
                   src={product.image} 
                   alt={product.name} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1 opacity-80 group-hover:opacity-100"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1 opacity-80 group-hover:opacity-60"
                   style={{ filter: 'grayscale(100%) contrast(1.2) brightness(0.9)' }}
                 />
+                
+                {/* Huge Target Sign Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-10 pointer-events-none">
+                  <div className="relative w-48 h-48 flex items-center justify-center">
+                    {/* Rotating outer ring */}
+                    <div className="absolute inset-0 border-[1px] border-military-accent/30 rounded-full animate-[spin_8s_linear_infinite]" />
+                    <div className="absolute inset-2 border-[1px] border-dashed border-military-accent/20 rounded-full animate-[spin_12s_linear_infinite_reverse]" />
+                    
+                    {/* Static Crosshair HUD */}
+                    <svg viewBox="0 0 100 100" className="w-40 h-40 text-military-accent drop-shadow-[0_0_15px_rgba(34,197,94,0.6)]">
+                      {/* Inner Circle */}
+                      <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="1" />
+                      {/* Center Dot */}
+                      <circle cx="50" cy="50" r="1" fill="currentColor" />
+                      
+                      {/* Brackets */}
+                      <path d="M30 30 L20 30 L20 40" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M70 30 L80 30 L80 40" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M30 70 L20 70 L20 60" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M70 70 L80 70 L80 60" fill="none" stroke="currentColor" strokeWidth="1.5" />
+
+                      {/* Cross Lines */}
+                      <line x1="50" y1="5" x2="50" y2="25" stroke="currentColor" strokeWidth="1" />
+                      <line x1="50" y1="75" x2="50" y2="95" stroke="currentColor" strokeWidth="1" />
+                      <line x1="5" y1="50" x2="25" y2="50" stroke="currentColor" strokeWidth="1" />
+                      <line x1="75" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="1" />
+                    </svg>
+                  </div>
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
                 
                 {/* Overlay Badge */}
-                <div className="absolute bottom-4 left-4">
+                <div className="absolute bottom-4 left-4 z-20">
                    <span className="inline-block px-3 py-1 bg-military-accent/90 text-white text-[10px] font-mono uppercase tracking-widest clip-angled-sm backdrop-blur-sm shadow-lg">
                      {product.category}
                    </span>
@@ -207,17 +237,22 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart, onView
                 <div className="flex gap-3">
                    <button 
                      onClick={() => onViewProduct(product)}
-                     className="flex-1 py-3 border border-white/20 text-xs font-bold font-heading text-opaque-med hover:text-white hover:border-military-accent hover:bg-military-accent/10 transition-all uppercase tracking-widest flex items-center justify-center gap-2 clip-angled-sm group/btn"
+                     className="flex-1 py-3 border border-white/20 text-xs font-bold font-heading text-opaque-med hover:text-white hover:border-military-accent hover:bg-military-accent/10 transition-all uppercase tracking-widest flex items-center justify-center gap-2 clip-angled-sm group/btn relative overflow-hidden"
                    >
-                     Details
-                     <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+                     {/* Button Target Effect */}
+                     <span className="absolute inset-0 border border-military-accent opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none"></span>
+                     <span className="relative z-10 flex items-center gap-2">
+                       Details <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+                     </span>
                    </button>
                    <button 
                      onClick={(e) => { e.stopPropagation(); onAddToCart(product); }}
                      disabled={product.stock === 0}
-                     className="w-12 bg-white/5 hover:bg-military-accent text-white flex items-center justify-center clip-angled-sm transition-colors border border-white/10 hover:border-transparent disabled:opacity-50 disabled:hover:bg-transparent"
+                     className="w-12 bg-white/5 hover:bg-military-accent text-white flex items-center justify-center clip-angled-sm transition-colors border border-white/10 hover:border-transparent disabled:opacity-50 disabled:hover:bg-transparent relative group/add"
                    >
-                     <Plus className="w-4 h-4" />
+                     {/* Add Button Target Effect */}
+                     <div className="absolute inset-0 border border-white opacity-0 group-hover/add:opacity-50 pointer-events-none"></div>
+                     <Plus className="w-4 h-4 relative z-10" />
                    </button>
                 </div>
               </div>

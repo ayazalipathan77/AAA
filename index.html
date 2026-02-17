@@ -19,23 +19,23 @@
             },
             colors: {
               military: {
-                950: '#050505', // Void
-                900: '#0a0a0a', // Deep
-                800: '#121212', // Surface
-                700: '#1c1c1c', // Component
-                600: '#2a2a2a', // Border
-                accent: '#ef4444', // Red-500 (High Vis)
-                accentDark: '#dc2626', // Red-600
-                accentGlow: 'rgba(239, 68, 68, 0.5)',
-                text: '#e5e5e5', 
-                muted: '#a3a3a3',
+                950: '#020602', // Deep Dark Green
+                900: '#051405', // Dark Green
+                800: '#0a260a', // Surface Green
+                700: '#143814', // Component
+                600: '#1e4a1e', // Border
+                accent: '#22c55e', // Green-500 (Primary)
+                accentDark: '#16a34a', // Green-600
+                accentGlow: 'rgba(34, 197, 94, 0.5)',
+                text: '#dcfce7', // Very light green white
+                muted: '#86efac', // Light green muted
               }
             },
             backgroundImage: {
-              'metal-gradient': 'linear-gradient(180deg, #2a2a2a 0%, #121212 100%)',
-              'metal-shine': 'linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%)',
-              'grid-pattern': 'linear-gradient(to right, #2a2a2a 1px, transparent 1px), linear-gradient(to bottom, #2a2a2a 1px, transparent 1px)',
-              'hex-pattern': 'url("data:image/svg+xml,%3Csvg width=\'24\' height=\'40\' viewBox=\'0 0 24 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 40c5.523 0 10-4.477 10-10V10c0-5.523 4.477-10 10-10H0v40z\' fill=\'%231c1c1c\' fill-opacity=\'0.4\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
+              'metal-gradient': 'linear-gradient(180deg, #1e4a1e 0%, #0a260a 100%)',
+              'metal-shine': 'linear-gradient(45deg, transparent 40%, rgba(34, 197, 94, 0.05) 50%, transparent 60%)',
+              'grid-pattern': 'linear-gradient(to right, #143814 1px, transparent 1px), linear-gradient(to bottom, #143814 1px, transparent 1px)',
+              'hex-pattern': 'url("data:image/svg+xml,%3Csvg width=\'24\' height=\'40\' viewBox=\'0 0 24 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 40c5.523 0 10-4.477 10-10V10c0-5.523 4.477-10 10-10H0v40z\' fill=\'%2322c55e\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
             }
           },
         },
@@ -43,10 +43,10 @@
     </script>
     <style>
       body {
-        /* Two-color grey to dark grey gradient background */
-        background: linear-gradient(to bottom, #3a3a3a, #0a0a0a);
+        /* Grey to Dark Grey Gradient (Top Left to Bottom Right) */
+        background: linear-gradient(to bottom right, #3a3a3a, #0a0a0a);
         background-attachment: fixed;
-        color: #e5e5e5;
+        color: #dcfce7;
         min-height: 100vh;
       }
       .font-heading {
@@ -77,7 +77,7 @@
         );
       }
       .scanline {
-        background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.3));
+        background: linear-gradient(to bottom, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
         background-size: 100% 3px;
         position: fixed;
         top: 0;
@@ -86,19 +86,19 @@
         bottom: 0;
         pointer-events: none;
         z-index: 50;
-        opacity: 0.1;
+        opacity: 0.15;
       }
       
       /* Opaque Text Utilities */
       .text-opaque-high {
-        color: rgba(255, 255, 255, 0.95);
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        color: rgba(220, 252, 231, 0.95);
+        text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
       }
       .text-opaque-med {
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(220, 252, 231, 0.75);
       }
       .text-opaque-low {
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(220, 252, 231, 0.45);
       }
 
       /* Custom scrollbar */
@@ -106,14 +106,14 @@
         width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #0a0a0a; 
+        background: #051405; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #ef4444; 
+        background: #22c55e; 
         border-radius: 0;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #dc2626; 
+        background: #16a34a; 
       }
 
       /* Print Specific Styles */

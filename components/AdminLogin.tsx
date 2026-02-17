@@ -23,7 +23,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center -mt-24">
-      <div className="max-w-md w-full p-8 bg-black/80 backdrop-blur-md border border-military-accent/50 clip-tech shadow-[0_0_50px_rgba(239,68,68,0.2)]">
+      <div className="max-w-md w-full p-8 bg-black/80 backdrop-blur-md border border-military-accent/50 clip-tech shadow-[0_0_50px_rgba(34,197,94,0.2)]">
         <div className="text-center mb-10">
           <ShieldAlert className="w-16 h-16 text-military-accent mx-auto mb-4 animate-pulse" />
           <h1 className="text-3xl font-heading font-bold text-white uppercase tracking-[0.2em]">

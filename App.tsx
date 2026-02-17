@@ -263,7 +263,7 @@ const App: React.FC = () => {
                 <span className="text-military-accent font-mono text-sm tracking-[0.5em] uppercase block mb-4 font-bold">Classified Assets</span>
                 <h2 className="text-5xl md:text-7xl font-bold font-heading uppercase tracking-tighter text-opaque-high mb-6 drop-shadow-2xl">
                   {currentView === 'HOME' ? (
-                    <>Operational <span className="text-transparent bg-clip-text bg-gradient-to-r from-military-accent to-red-900">Hardware</span></>
+                    <>Operational <span className="text-transparent bg-clip-text bg-gradient-to-r from-military-accent to-military-600">Hardware</span></>
                   ) : (
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">{getPageTitle()}</span>
                   )}
