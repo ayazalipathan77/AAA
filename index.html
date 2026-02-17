@@ -1,145 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AAA Tactical</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Chakra Petch', 'sans-serif'],
-              heading: ['Rajdhani', 'sans-serif'],
-              mono: ['"Share Tech Mono"', 'monospace'],
-            },
-            colors: {
-              military: {
-                950: '#020602', // Deep Dark Green
-                900: '#051405', // Dark Green
-                800: '#0a260a', // Surface Green
-                700: '#143814', // Component
-                600: '#1e4a1e', // Border
-                accent: '#22c55e', // Green-500 (Primary)
-                accentDark: '#16a34a', // Green-600
-                accentGlow: 'rgba(34, 197, 94, 0.5)',
-                text: '#dcfce7', // Very light green white
-                muted: '#86efac', // Light green muted
-              }
-            },
-            backgroundImage: {
-              'metal-gradient': 'linear-gradient(180deg, #1e4a1e 0%, #0a260a 100%)',
-              'metal-shine': 'linear-gradient(45deg, transparent 40%, rgba(34, 197, 94, 0.05) 50%, transparent 60%)',
-              'grid-pattern': 'linear-gradient(to right, #143814 1px, transparent 1px), linear-gradient(to bottom, #143814 1px, transparent 1px)',
-              'hex-pattern': 'url("data:image/svg+xml,%3Csvg width=\'24\' height=\'40\' viewBox=\'0 0 24 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 40c5.523 0 10-4.477 10-10V10c0-5.523 4.477-10 10-10H0v40z\' fill=\'%2322c55e\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAA Tactical</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Chakra Petch', 'sans-serif'],
+            heading: ['Rajdhani', 'sans-serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
+          },
+          colors: {
+            military: {
+              950: '#020602', // Deep Dark Green
+              900: '#051405', // Dark Green
+              800: '#0a260a', // Surface Green
+              700: '#143814', // Component
+              600: '#1e4a1e', // Border
+              accent: '#22c55e', // Green-500 (Primary)
+              accentDark: '#16a34a', // Green-600
+              accentGlow: 'rgba(34, 197, 94, 0.5)',
+              text: '#dcfce7', // Very light green white
+              muted: '#86efac', // Light green muted
             }
           },
+          backgroundImage: {
+            'metal-gradient': 'linear-gradient(180deg, #1e4a1e 0%, #0a260a 100%)',
+            'metal-shine': 'linear-gradient(45deg, transparent 40%, rgba(34, 197, 94, 0.05) 50%, transparent 60%)',
+            'grid-pattern': 'linear-gradient(to right, #143814 1px, transparent 1px), linear-gradient(to bottom, #143814 1px, transparent 1px)',
+            'hex-pattern': 'url("data:image/svg+xml,%3Csvg width=\'24\' height=\'40\' viewBox=\'0 0 24 40\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 40c5.523 0 10-4.477 10-10V10c0-5.523 4.477-10 10-10H0v40z\' fill=\'%2322c55e\' fill-opacity=\'0.1\' fill-rule=\'evenodd\'/%3E%3C/svg%3E")',
+          }
         },
+      },
+    }
+  </script>
+  <style>
+    body {
+      /* Grey to Dark Grey Gradient (Top Left to Bottom Right) */
+      background: linear-gradient(to bottom right, #3a3a3a, #0a0a0a);
+      background-attachment: fixed;
+      color: #dcfce7;
+      min-height: 100vh;
+    }
+
+    .font-heading {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .clip-angled {
+      clip-path: polygon(20px 0, 100% 0,
+          100% calc(100% - 20px), calc(100% - 20px) 100%,
+          0 100%, 0 20px);
+    }
+
+    .clip-angled-sm {
+      clip-path: polygon(10px 0, 100% 0,
+          100% calc(100% - 10px), calc(100% - 10px) 100%,
+          0 100%, 0 10px);
+    }
+
+    .clip-tech {
+      clip-path: polygon(0 0,
+          calc(100% - 20px) 0,
+          100% 20px,
+          100% 100%,
+          20px 100%,
+          0 calc(100% - 20px));
+    }
+
+    .scanline {
+      background: linear-gradient(to bottom, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+      background-size: 100% 3px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.15;
+    }
+
+    /* Opaque Text Utilities */
+    .text-opaque-high {
+      color: rgba(220, 252, 231, 0.95);
+      text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+    }
+
+    .text-opaque-med {
+      color: rgba(220, 252, 231, 0.75);
+    }
+
+    .text-opaque-low {
+      color: rgba(220, 252, 231, 0.45);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #051405;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #22c55e;
+      border-radius: 0;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #16a34a;
+    }
+
+    /* Print Specific Styles */
+    @media print {
+      body * {
+        visibility: hidden;
       }
-    </script>
-    <style>
-      body {
-        /* Grey to Dark Grey Gradient (Top Left to Bottom Right) */
-        background: linear-gradient(to bottom right, #3a3a3a, #0a0a0a);
-        background-attachment: fixed;
-        color: #dcfce7;
-        min-height: 100vh;
+
+      .print-area,
+      .print-area * {
+        visibility: visible;
       }
-      .font-heading {
-        font-family: 'Rajdhani', sans-serif;
-      }
-      .clip-angled {
-        clip-path: polygon(
-          20px 0, 100% 0, 
-          100% calc(100% - 20px), calc(100% - 20px) 100%, 
-          0 100%, 0 20px
-        );
-      }
-      .clip-angled-sm {
-        clip-path: polygon(
-          10px 0, 100% 0, 
-          100% calc(100% - 10px), calc(100% - 10px) 100%, 
-          0 100%, 0 10px
-        );
-      }
-      .clip-tech {
-        clip-path: polygon(
-          0 0, 
-          calc(100% - 20px) 0, 
-          100% 20px, 
-          100% 100%, 
-          20px 100%, 
-          0 calc(100% - 20px)
-        );
-      }
-      .scanline {
-        background: linear-gradient(to bottom, rgba(34, 197, 94, 0), rgba(34, 197, 94, 0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
-        background-size: 100% 3px;
+
+      .print-area {
         position: fixed;
-        top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        pointer-events: none;
-        z-index: 50;
-        opacity: 0.15;
-      }
-      
-      /* Opaque Text Utilities */
-      .text-opaque-high {
-        color: rgba(220, 252, 231, 0.95);
-        text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
-      }
-      .text-opaque-med {
-        color: rgba(220, 252, 231, 0.75);
-      }
-      .text-opaque-low {
-        color: rgba(220, 252, 231, 0.45);
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: white !important;
+        color: black !important;
+        z-index: 9999;
+        padding: 20px;
       }
 
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 6px;
+      .no-print {
+        display: none !important;
       }
-      ::-webkit-scrollbar-track {
-        background: #051405; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #22c55e; 
-        border-radius: 0;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #16a34a; 
-      }
-
-      /* Print Specific Styles */
-      @media print {
-        body * {
-          visibility: hidden;
-        }
-        .print-area, .print-area * {
-          visibility: visible;
-        }
-        .print-area {
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: white !important;
-          color: black !important;
-          z-index: 9999;
-          padding: 20px;
-        }
-        .no-print {
-          display: none !important;
-        }
-      }
-    </style>
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -152,8 +163,11 @@
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
-    <div class="scanline"></div>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <div class="scanline"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>
