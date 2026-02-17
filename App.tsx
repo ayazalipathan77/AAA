@@ -18,23 +18,23 @@ const App: React.FC = () => {
   // Global State
   const [products, setProducts] = useState<Product[]>(PRODUCTS);
   const [orders, setOrders] = useState<Order[]>([
-    { 
-      id: 'ORD-9821', 
+    {
+      id: 'ORD-9821',
       customer: { name: 'J. WICK', email: 'baba.yaga@continental.com', address: 'Unknown' },
-      total: 2450.00, 
-      status: 'DEPLOYED', 
-      date: '2024-03-15', 
-      items: [{...PRODUCTS[0], quantity: 1}, {...PRODUCTS[2], quantity: 3}],
+      total: 2450.00,
+      status: 'DEPLOYED',
+      date: '2024-03-15',
+      items: [{ ...PRODUCTS[0], quantity: 1 }, { ...PRODUCTS[2], quantity: 3 }],
       shipping: 50,
       tax: 200
     },
-    { 
-      id: 'ORD-9822', 
+    {
+      id: 'ORD-9822',
       customer: { name: 'S. FISHER', email: 's.fisher@third.echelon', address: 'NSA HQ' },
-      total: 125.50, 
-      status: 'PENDING', 
-      date: '2024-03-16', 
-      items: [{...PRODUCTS[5], quantity: 10}],
+      total: 125.50,
+      status: 'PENDING',
+      date: '2024-03-16',
+      items: [{ ...PRODUCTS[5], quantity: 10 }],
       shipping: 0,
       tax: 10
     }
@@ -49,7 +49,7 @@ const App: React.FC = () => {
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
-        return prev.map(item => 
+        return prev.map(item =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
@@ -118,7 +118,7 @@ const App: React.FC = () => {
 
   // --- Admin Logic ---
   const handleUpdateProduct = (id: number, field: string, value: any) => {
-    setProducts(prev => prev.map(p => 
+    setProducts(prev => prev.map(p =>
       p.id === id ? { ...p, [field]: value } : p
     ));
   };
@@ -137,7 +137,7 @@ const App: React.FC = () => {
   };
 
   const handleUpdateOrderStatus = (id: string, status: Order['status']) => {
-    setOrders(prev => prev.map(o => 
+    setOrders(prev => prev.map(o =>
       o.id === id ? { ...o, status } : o
     ));
   };
@@ -161,7 +161,7 @@ const App: React.FC = () => {
   };
 
   const getPageTitle = () => {
-    switch(currentView) {
+    switch (currentView) {
       case 'ARMORY': return 'Firearms';
       case 'MUNITIONS': return 'Ammunition';
       case 'GEAR': return 'Tactical Gear';
@@ -174,7 +174,7 @@ const App: React.FC = () => {
   };
 
   const getForcedCategory = () => {
-    switch(currentView) {
+    switch (currentView) {
       case 'ARMORY': return 'Firearms';
       case 'MUNITIONS': return 'Ammunition';
       case 'GEAR': return 'Tactical Gear';
@@ -188,17 +188,17 @@ const App: React.FC = () => {
       case 'PRODUCT_DETAILS':
         return selectedProduct ? (
           <div className="pt-12">
-            <ProductDetails 
-              product={products.find(p => p.id === selectedProduct.id) || selectedProduct} 
+            <ProductDetails
+              product={products.find(p => p.id === selectedProduct.id) || selectedProduct}
               onBack={() => handleNavigate('HOME')}
               onAddToCart={() => handleAddToCart(selectedProduct)}
             />
           </div>
         ) : null;
-      
+
       case 'CART':
         return (
-          <CartView 
+          <CartView
             items={cartItems}
             onUpdateQuantity={handleUpdateQuantity}
             onRemove={handleRemoveFromCart}
@@ -206,10 +206,10 @@ const App: React.FC = () => {
             onContinueShopping={() => handleNavigate('HOME')}
           />
         );
-      
+
       case 'CHECKOUT':
         return (
-          <CheckoutView 
+          <CheckoutView
             cartTotal={cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0)}
             onComplete={handleCheckoutComplete}
             onBack={() => handleNavigate('CART')}
@@ -218,7 +218,7 @@ const App: React.FC = () => {
 
       case 'ADMIN_LOGIN':
         return (
-          <AdminLogin 
+          <AdminLogin
             onLogin={() => {
               setIsAdminAuthenticated(true);
               handleNavigate('ADMIN_DASHBOARD');
@@ -228,7 +228,7 @@ const App: React.FC = () => {
 
       case 'ADMIN_DASHBOARD':
         return (
-          <AdminDashboard 
+          <AdminDashboard
             products={products}
             orders={orders}
             onUpdateProduct={handleUpdateProduct} // Inline quick edit
@@ -245,7 +245,7 @@ const App: React.FC = () => {
 
       case 'INTEL':
         return <IntelGrid />;
-      
+
       case 'HOME':
       case 'ARMORY':
       case 'MUNITIONS':
@@ -257,7 +257,7 @@ const App: React.FC = () => {
                 <HeroSlider />
               </div>
             )}
-            
+
             <div className={`w-full px-6 md:px-12 relative ${currentView === 'HOME' ? 'py-24' : 'py-12'}`}>
               <div className="mb-20 text-center relative animate-fadeIn">
                 <span className="text-military-accent font-mono text-sm tracking-[0.5em] uppercase block mb-4 font-bold">Classified Assets</span>
@@ -275,9 +275,9 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <ProductGrid 
+              <ProductGrid
                 products={products}
-                onAddToCart={handleAddToCart} 
+                onAddToCart={handleAddToCart}
                 onViewProduct={handleViewProduct}
                 forcedCategory={getForcedCategory()}
               />
@@ -291,14 +291,14 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen text-military-text font-sans selection:bg-military-accent selection:text-white overflow-x-hidden">
       <div className="fixed inset-0 bg-[size:50px_50px] bg-grid-pattern opacity-[0.03] pointer-events-none z-0 mix-blend-overlay" />
-      
+
       <div className="relative z-10 flex flex-col min-h-screen">
-        <Navbar 
-          cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} 
+        <Navbar
+          cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)}
           currentView={currentView}
           onNavigate={handleNavigate}
         />
-        
+
         <main className="flex-grow pt-24">
           {renderContent()}
         </main>
