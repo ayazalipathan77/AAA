@@ -11,6 +11,7 @@ import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import { Product, CartItem, Order } from './types';
 import { PRODUCTS } from './constants';
+import GeminiAdvisor from './components/GeminiAdvisor';
 
 export type PageView = 'HOME' | 'ARMORY' | 'MUNITIONS' | 'GEAR' | 'INTEL' | 'PRODUCT_DETAILS' | 'CART' | 'CHECKOUT' | 'ADMIN_LOGIN' | 'ADMIN_DASHBOARD';
 
@@ -258,7 +259,7 @@ const App: React.FC = () => {
               </div>
             )}
             
-            <div className={`container mx-auto px-4 relative ${currentView === 'HOME' ? 'py-24' : 'py-12'}`}>
+            <div className={`w-full px-6 md:px-12 relative ${currentView === 'HOME' ? 'py-24' : 'py-12'}`}>
               <div className="mb-20 text-center relative animate-fadeIn">
                 <span className="text-military-accent font-mono text-sm tracking-[0.5em] uppercase block mb-4 font-bold">Classified Assets</span>
                 <h2 className="text-5xl md:text-7xl font-bold font-heading uppercase tracking-tighter text-opaque-high mb-6 drop-shadow-2xl">
@@ -304,6 +305,7 @@ const App: React.FC = () => {
         </main>
 
         {currentView !== 'ADMIN_LOGIN' && currentView !== 'ADMIN_DASHBOARD' && <Footer />}
+        <GeminiAdvisor />
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, currentView, onNavigate }) =
         ? 'bg-military-950/90 backdrop-blur-md border-military-800 py-3 shadow-2xl' 
         : 'bg-transparent border-transparent py-6'
     }`}>
-      <div className="container mx-auto px-4">
+      <div className="w-full px-6 md:px-12">
         <div className="flex justify-between items-center">
           
           {/* Logo Area */}

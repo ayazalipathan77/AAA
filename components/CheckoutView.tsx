@@ -23,7 +23,7 @@ const CheckoutView: React.FC<CheckoutViewProps> = ({ cartTotal, onComplete, onBa
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 animate-fadeIn max-w-4xl">
+    <div className="w-full px-6 md:px-12 py-12 animate-fadeIn max-w-[1600px] mx-auto">
       <button 
         onClick={onBack}
         className="flex items-center gap-2 text-opaque-low hover:text-military-accent mb-8 font-mono text-sm tracking-widest transition-colors group"

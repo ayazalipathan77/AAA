@@ -3,12 +3,12 @@ import { Hexagon, Mail, Phone, MapPin, Facebook, Twitter, Instagram, ChevronRigh
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 pt-20 pb-10 relative overflow-hidden mt-12">
+    <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 pt-20 pb-10 relative overflow-hidden mt-12 w-full">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-military-accent to-transparent opacity-30" />
       <div className="absolute -left-10 bottom-0 w-64 h-64 bg-military-accent/5 rounded-full blur-3xl pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="w-full px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
           
           {/* Brand */}

@@ -11,7 +11,7 @@ interface ProductDetailsProps {
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack, onAddToCart }) => {
   return (
-    <div className="container mx-auto px-4 py-8 animate-fadeIn">
+    <div className="w-full px-6 md:px-12 py-8 animate-fadeIn">
       <button 
         onClick={onBack}
         className="flex items-center gap-2 text-opaque-low hover:text-military-accent mb-8 font-mono text-sm tracking-widest transition-colors group"

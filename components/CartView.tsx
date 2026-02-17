@@ -18,7 +18,7 @@ const CartView: React.FC<CartViewProps> = ({ items, onUpdateQuantity, onRemove, 
   const total = subtotal + tax + shipping;
 
   return (
-    <div className="container mx-auto px-4 py-12 animate-fadeIn">
+    <div className="w-full px-6 md:px-12 py-12 animate-fadeIn">
       <div className="mb-12 border-b border-white/10 pb-4 flex justify-between items-end">
         <div>
           <h2 className="text-4xl font-heading font-bold text-opaque-high uppercase tracking-widest drop-shadow-md">

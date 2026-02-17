@@ -118,7 +118,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 animate-fadeIn relative">
+    <div className="w-full px-6 md:px-12 py-8 animate-fadeIn relative">
       
       {/* --- INVOICE MODAL --- */}
       {selectedOrder && (

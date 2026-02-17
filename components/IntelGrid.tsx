@@ -4,7 +4,7 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 
 const IntelGrid: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 py-12 animate-fadeIn">
+    <div className="w-full px-6 md:px-12 py-12 animate-fadeIn">
       <div className="mb-12 border-b border-white/10 pb-4">
         <h2 className="text-4xl font-heading font-bold text-opaque-high uppercase tracking-widest drop-shadow-md">
           Field Intelligence
