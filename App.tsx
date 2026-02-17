@@ -253,9 +253,7 @@ const App: React.FC = () => {
         return (
           <>
             {currentView === 'HOME' && (
-              <div className="-mt-24">
-                <HeroSlider />
-              </div>
+              <HeroSlider />
             )}
 
             <div className={`w-full px-6 md:px-12 relative ${currentView === 'HOME' ? 'py-24' : 'py-12'}`}>
