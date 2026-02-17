@@ -11,7 +11,6 @@ import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import { Product, CartItem, Order } from './types';
 import { PRODUCTS } from './constants';
-import GeminiAdvisor from './components/GeminiAdvisor';
 
 export type PageView = 'HOME' | 'ARMORY' | 'MUNITIONS' | 'GEAR' | 'INTEL' | 'PRODUCT_DETAILS' | 'CART' | 'CHECKOUT' | 'ADMIN_LOGIN' | 'ADMIN_DASHBOARD';
 
@@ -305,7 +304,6 @@ const App: React.FC = () => {
         </main>
 
         {currentView !== 'ADMIN_LOGIN' && currentView !== 'ADMIN_DASHBOARD' && <Footer />}
-        <GeminiAdvisor />
       </div>
     </div>
   );

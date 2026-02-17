@@ -17,7 +17,7 @@ const HeroSlider: React.FC = () => {
   const prevSlide = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-military-950 pt-24 md:pt-28 lg:pt-32">
+    <div className="relative w-full h-[75vh] md:h-[70vh] lg:h-[65vh] overflow-hidden bg-military-950 pt-20 md:pt-24 lg:pt-28">
       {/* Slides */}
       {SLIDES.map((slide, index) => (
         <div

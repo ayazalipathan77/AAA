@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: aaa-tactical
-    env: node
-    plan: free
-    branch: main
-    buildCommand: npm run build
-    startCommand: npm start
-    autoDeploy: true
