@@ -36,6 +36,19 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack, onAddT
               alt={product.name} 
               className="w-full h-full object-contain relative z-10 transition-transform duration-700 group-hover:scale-105 drop-shadow-2xl"
               style={{ filter: 'grayscale(0.8) contrast(1.1)' }}
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.onerror = null;
+                target.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+                  <svg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'>
+                    <rect width='100%' height='100%' fill='%23090909' />
+                    <g fill='%23bdbdbd' font-family='sans-serif' font-size='28' text-anchor='middle'>
+                      <text x='50%' y='48%'>Image not available</text>
+                      <text x='50%' y='56%'>Asset preview unavailable</text>
+                    </g>
+                  </svg>
+                `);
+              }}
             />
             
             {/* Floating Stats */}
