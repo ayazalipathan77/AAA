@@ -105,6 +105,66 @@
       color: rgba(220, 252, 231, 0.45);
     }
 
+    /* Hero Slider Animations */
+    @keyframes heroRevealUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroRevealLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes heroLineGrow {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+    @keyframes heroLineGrowX {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes heroZoomSlow {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.15); }
+    }
+    @keyframes heroGlitch {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 1px); }
+      40% { clip-path: inset(60% 0 10% 0); transform: translate(2px, -1px); }
+      60% { clip-path: inset(40% 0 30% 0); transform: translate(-1px, 2px); }
+      80% { clip-path: inset(10% 0 70% 0); transform: translate(1px, -2px); }
+    }
+    @keyframes heroPulseRing {
+      0% { transform: scale(0.8); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 0; }
+      100% { transform: scale(0.8); opacity: 0; }
+    }
+    @keyframes heroScanline {
+      0% { top: -10%; }
+      100% { top: 110%; }
+    }
+    @keyframes heroTimerFill {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+    @keyframes heroFlicker {
+      0%, 95%, 100% { opacity: 1; }
+      96% { opacity: 0.4; }
+      97% { opacity: 1; }
+      98% { opacity: 0.6; }
+    }
+    @keyframes heroDash {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .hero-reveal-up { animation: heroRevealUp 0.7s ease-out both; }
+    .hero-reveal-up-d1 { animation: heroRevealUp 0.7s 0.15s ease-out both; }
+    .hero-reveal-up-d2 { animation: heroRevealUp 0.7s 0.3s ease-out both; }
+    .hero-reveal-up-d3 { animation: heroRevealUp 0.7s 0.45s ease-out both; }
+    .hero-reveal-up-d4 { animation: heroRevealUp 0.7s 0.6s ease-out both; }
+    .hero-reveal-left { animation: heroRevealLeft 0.8s ease-out both; }
+    .hero-line-grow { animation: heroLineGrow 0.6s 0.2s ease-out both; transform-origin: top; }
+    .hero-line-grow-x { animation: heroLineGrowX 0.8s 0.5s ease-out both; transform-origin: left; }
+
     /* Custom scrollbar */
     ::-webkit-scrollbar {
       width: 6px;
