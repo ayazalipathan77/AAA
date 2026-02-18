@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-military-900: #1a1a1a;
+  --color-military-800: #2d2d2d;
+  --color-military-accent: #b91c1c;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-red-700 text-white font-bold uppercase tracking-widest hover:bg-red-800 transition-colors duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-gray-900 text-gray-900 font-bold uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-colors duration-300;
+  }
+}

@@ -1,12 +1,13 @@
 export interface Product {
   id: number;
   name: string;
-  category: 'Firearms' | 'Ammunition' | 'Tactical Gear';
+  category: 'Firearms' | 'Ammunition' | 'Tactical Gear' | 'Handguns' | 'Rifles';
   price: number;
   image: string;
   specs: { [key: string]: string };
   description: string;
   stock: number;
+  rating?: number;
 }
 
 export interface CartItem extends Product {

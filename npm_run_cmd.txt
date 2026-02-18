@@ -1,0 +1,1 @@
+$env:Path = "C:\Users\ayaz.ali\Downloads\node-v24.13.0-win-x64\node-v24.13.0-win-x64;" + $env:Path; & "C:\Users\ayaz.ali\Downloads\node-v24.13.0-win-x64\node-v24.13.0-win-x64\npm.cmd" run dev
